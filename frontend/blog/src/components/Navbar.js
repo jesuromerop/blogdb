@@ -31,7 +31,7 @@ function NavBar() {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand onClick={gotoHomePage}>Blog</Navbar.Brand>
+                <Navbar.Brand onClick={gotoHomePage} style={{cursor: "pointer"}}>Blog</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">

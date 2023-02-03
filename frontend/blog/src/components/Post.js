@@ -30,36 +30,39 @@ function Post() {
                         <div className="col-md-12">
                             <div className="card-body">
                                 <h3 className="mx-auto mb-4">Crear publicacion</h3>
-                                <div className="form-group mb-3">
-                                    <label htmlFor="title" className="mb-2">Ingresa el titulo</label>
-                                    <input 
-                                        type="nombre" 
-                                        className="form-control" 
-                                        id="title" 
-                                        name="title"
-                                        value={title}
-                                        required
-                                        placeholder="Titulo" 
-                                        onChange={(e) => setTitle(e.target.value)} 
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label className="mb-2">Decripción</label>
-                                    <div className="input-group mb-3">
-                                        <div className="input-group-prepend">
-                                        </div>
-                                        <textarea 
-                                            className="form-control rounded" 
-                                            aria-label="Decripción" 
-                                            id="description" 
-                                            name="description" 
-                                            value={description} 
+                                <form>
+                                        
+                                    <div className="form-group mb-3">
+                                        <label htmlFor="title" className="mb-2">Ingresa el titulo</label>
+                                        <input 
+                                            type="nombre" 
+                                            className="form-control" 
+                                            id="title" 
+                                            name="title"
+                                            value={title}
                                             required
-                                            onChange={(e) => setDescription(e.target.value)} 
-                                        ></textarea>
+                                            placeholder="Titulo" 
+                                            onChange={(e) => setTitle(e.target.value)} 
+                                        />
                                     </div>
-                                </div>
-                                <button type="submit" onClick={handleSubmit} id="bt" className="btn btn-primary mr-0">Crear</button>                    
+                                    <div className="form-group">
+                                        <label className="mb-2">Decripción</label>
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                            </div>
+                                            <textarea 
+                                                className="form-control rounded" 
+                                                aria-label="Decripción" 
+                                                id="description" 
+                                                name="description" 
+                                                value={description} 
+                                                required
+                                                onChange={(e) => setDescription(e.target.value)} 
+                                            ></textarea>
+                                        </div>
+                                    </div>
+                                    <button type="submit" onClick={handleSubmit} id="bt" className="btn btn-primary mr-0">Crear</button>                    
+                                </form>
                             </div>
                         </div>
                     </div>

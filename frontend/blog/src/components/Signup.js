@@ -41,7 +41,7 @@ function Login() {
                     <form onSubmit={handleSubmit}>
                         <h1 className="mb-3 text-center">Registrate</h1>
                         <div className="mb-3 form-group">
-                            <label for="name">Nombre</label>
+                            <label htmlFor="name">Nombre</label>
                             <input 
                                 type="text" 
                                 className="form-control"
@@ -53,7 +53,7 @@ function Login() {
                                 onChange={(e) => setName(e.target.value)}    
                             />
                         </div>
-                        <div class="mb-3 form-group">
+                        <div className="mb-3 form-group">
                             <label htmlFor="email">Correo Electrónico</label>
                             <input 
                                 type="email" 
@@ -80,7 +80,7 @@ function Login() {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
-                        <button type="submit" onclick={gotoSignUpPage} className="btn btn-primary mr-0">Registrarme</button>
+                        <button type="submit" onClick={gotoSignUpPage} className="btn btn-primary mr-0">Registrarme</button>
                     </form>
                 </div>
             </div>

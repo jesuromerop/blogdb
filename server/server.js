@@ -23,19 +23,19 @@ app.all('*', function(_, res, next){
 	next();
 });
 
-app.post('/login', login.validateDataLogin, login.loginUser);//
-app.post('/register', register.validateDataReg, register.registerUser);//
-app.get('/posts', middle.authHeader, middle.validSign, posts.getPosts);//
-app.get('/post/:id', middle.authHeader, middle.validSign, post.getPost);//
+app.post('/login', login.validateDataLogin, login.loginUser);
+app.post('/register', register.validateDataReg, register.registerUser);
+app.get('/posts', middle.authHeader, middle.validSign, posts.getPosts);
+app.get('/post/:id', middle.authHeader, middle.validSign, post.getPost);
 app.post('/post', middle.authHeader, middle.validSign, post.validatePostData, post.createPost);
-app.get('/user', middle.authHeader, middle.validSign, user.getDataUser);//
-app.patch('/user/nameChange', middle.authHeader, middle.validSign, user.validateNameData, user.changeName);//
-app.patch('/user/emailChange', middle.authHeader, middle.validSign, user.validateEmailData, user.changeEmail);//
-app.patch('/user/passChange', middle.authHeader, middle.validSign, user.validatePassData, user.changePass);//
-app.delete('/post/:id', middle.authHeader, middle.validSign, post.deletePost);//
+app.get('/user', middle.authHeader, middle.validSign, user.getDataUser);
+app.patch('/user/nameChange', middle.authHeader, middle.validSign, user.validateNameData, user.changeName);
+app.patch('/user/emailChange', middle.authHeader, middle.validSign, user.validateEmailData, user.changeEmail);
+app.patch('/user/passChange', middle.authHeader, middle.validSign, user.validatePassData, user.changePass);
+app.delete('/post/:id', middle.authHeader, middle.validSign, post.deletePost);
 app.patch('/post/:id', middle.authHeader, middle.validSign, post.validatePostData, post.editPost);
 
 
-app.listen(3002, ()=> {
-	console.log(`Servidor en localhost puerto 3002`);
+app.listen(process.env.SERVER_PORT || 3002, ()=> {
+	console.log(`Servidor en localhost puerto ${process.env.SERVER_PORT || 3002}`);
 });

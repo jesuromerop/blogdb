@@ -7,6 +7,7 @@ import Signup from './components/Signup';
 import Blog from './components/Blog';
 import Post from './components/Post';
 import Profile from './components/Profile';
+import PostView from './components/PostView';
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
@@ -29,6 +30,11 @@ function App() {
             <Route path='/profile' element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            } />
+            <Route path='/postview/:id' element={
+              <ProtectedRoute>
+                <PostView />
               </ProtectedRoute>
             } />
         </Routes>

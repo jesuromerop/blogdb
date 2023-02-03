@@ -8,6 +8,7 @@ module.exports.getPost = function(req, res) {
     
     post.getPostInfo(id)
     .then(data => {
+        console.log(data);
         if(data.length == 0) {
             res.send({
                 success: true,
