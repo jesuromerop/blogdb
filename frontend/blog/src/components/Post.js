@@ -10,7 +10,6 @@ function Post() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ title, description });
         let result = await createPost(title, description);
         setTitle("");
         setDescription("");

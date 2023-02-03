@@ -13,7 +13,6 @@ function PostEdit() {
             let { id } = params;
             const result = await getPost(id);
             if (result.success) {
-                console.log(result)
                 setPost(result.data);
             }
         }
@@ -23,7 +22,6 @@ function PostEdit() {
     const handleSubmit = async (e) => {
         let { id } = params;
         e.preventDefault();
-        console.log({ post });
         let result = await editPost(id, post);
         if(result.success) {
             navigate("/blog");

@@ -15,7 +15,6 @@ function Profile() {
         const profile = async () => {
             const result = await getProfile();
             if (result.success) {
-                console.log(result)
                 setEmail(result.data[0].userInfo.email);
                 setName(result.data[0].userInfo.name);
                 setPosts(result.data[0].userPosts);
@@ -40,7 +39,6 @@ function Profile() {
     const fetchPosts = async () => {
         const result = await getProfile();
         if (result.success) {
-            console.log(result)
             setPosts(result.data[0].userPosts);
         }
     }

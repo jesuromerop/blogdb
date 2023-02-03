@@ -9,7 +9,6 @@ export const postLoginDetails = async (email, password) => {
             pass: password
         })
         
-        console.log(res.data)
         if(res.status === 200) {
             if (res.data.success) {
                 localStorage.setItem('token', res.data.token)
@@ -36,8 +35,7 @@ export const postSignup = async (name, email, password) => {
             email: email,
             pass: password
         })
-        
-        console.log(res.data)
+
         if(res.status === 200) {
             if (res.data.success) {
                 alert(res.data.msg);

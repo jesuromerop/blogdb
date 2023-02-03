@@ -20,7 +20,6 @@ function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ name, email, password });
         let result = await postSignup(name, email, password);
         setName("");
         setPassword("");
@@ -31,7 +30,7 @@ function Login() {
         }
     };
 
-    const gotoSignUpPage = () => navigate("/register");
+    const gotoSignUpPage = () => navigate("/signup");
 
     return (
         <div>

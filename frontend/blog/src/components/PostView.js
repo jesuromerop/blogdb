@@ -14,7 +14,6 @@ function PostView() {
             let { id } = params;
             const result = await getPost(id);
             if (result.success) {
-              console.log(result)
               setPost(result.data);
               setDate(new Date(result.data.regDate))
             }

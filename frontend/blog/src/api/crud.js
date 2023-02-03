@@ -10,8 +10,7 @@ export const createPost = async (title, description) => {
             description
         }, {'headers': { 'auth': token }     
         })
-        
-        console.log(res.data)
+
         if(res.status === 200) {
             if (res.data.success) {
                 return res.data
@@ -35,8 +34,7 @@ export const getProfile = async () => {
     try {
         const token = localStorage.getItem("token");
         const res = await axios.get(`${REACT_APP_BACKEND_URL}/user`, {'headers': { 'auth': token }})
-        
-        console.log(res.data)
+
         if(res.status === 200) {
             if (res.data.success) {
                 return res.data
@@ -59,8 +57,7 @@ export const changeEmail = async (email) => {
         const token = localStorage.getItem("token");
         const res = await axios.patch(`${REACT_APP_BACKEND_URL}/user/emailChange`, {email},
         {'headers': { 'auth': token }})
-        
-        console.log(res.data)
+
         if(res.status === 200) {
             alert(res.data.msg)
             if(res.data.success) localStorage.setItem('token', res.data.token)
@@ -78,8 +75,7 @@ export const changePass = async (pass) => {
         const token = localStorage.getItem("token");
         const res = await axios.patch(`${REACT_APP_BACKEND_URL}/user/passChange`, {pass},
         {'headers': { 'auth': token }})
-        
-        console.log(res.data)
+
         if(res.status === 200) {
             alert(res.data.msg)
             if(res.data.success) {
@@ -100,8 +96,7 @@ export const changeName = async (name) => {
         const token = localStorage.getItem("token");
         const res = await axios.patch(`${REACT_APP_BACKEND_URL}/user/nameChange`, {name},
         {'headers': { 'auth': token }})
-        
-        console.log(res.data)
+
         if(res.status === 200) {
             alert(res.data.msg)
             if(res.data.success) localStorage.setItem('token', res.data.token);
@@ -119,8 +114,7 @@ export const getPosts = async () => {
         const token = localStorage.getItem("token");
         const res = await axios.get(`${REACT_APP_BACKEND_URL}/posts`,
         {'headers': { 'auth': token }})
-        
-        console.log(res.data)
+
         if(res.status === 200) {
             return res.data;
         }
@@ -137,8 +131,7 @@ export const getPost = async (id) => {
         const token = localStorage.getItem("token");
         const res = await axios.get(`${REACT_APP_BACKEND_URL}/post/${id}`,
         {'headers': { 'auth': token }})
-        
-        console.log(res.data)
+
         if(res.status === 200) {
             return res.data;
         }
@@ -155,8 +148,7 @@ export const deletePost = async (id) => {
         const token = localStorage.getItem("token");
         const res = await axios.delete(`${REACT_APP_BACKEND_URL}/post/${id}`,
         {'headers': { 'auth': token }})
-        
-        console.log(res.data)
+
         if(res.status === 200) {
             alert(res.data.msg)
         }
@@ -174,8 +166,7 @@ export const editPost = async (id, post) => {
         const res = await axios.patch(`${REACT_APP_BACKEND_URL}/post/${id}`, 
         {title: post.title, description: post.description},
         {'headers': { 'auth': token }})
-        
-        console.log(res.data);
+
         if(res.status === 200) {
             alert(res.data.msg);
             return res.data;

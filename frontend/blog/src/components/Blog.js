@@ -11,7 +11,6 @@ function Blog() {
     const posts = async () => {
         const result = await getPosts();
         if (result.success) {
-          console.log(result)
           setData(result);
         }
     }
