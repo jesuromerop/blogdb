@@ -114,6 +114,13 @@ module.exports.validatePassData = function(req, res, next) {
         });
     }
 
+    if(pass.length < 8) {
+        return res.send({
+            success: false,
+            msg: "La contraseña debe contener al menos 8 caracteres"
+        });
+    }
+
     next();
 }
 
