@@ -36,10 +36,10 @@ function Login() {
     return (
         <div>
             <Navbar />
-            <div className="card m-5 ">
+            <div className="card my-5 mx-auto shadow p-2" style={{maxWidth: "540px", height: "100%"}}>
                 <div className="card-body">
                     <form onSubmit={handleSubmit}>
-                        <h1 className="mb-3 text-center">Registrate</h1>
+                        <h2 className="mb-3 text-center">Registrate</h2>
                         <div className="mb-3 form-group">
                             <label htmlFor="name">Nombre</label>
                             <input 

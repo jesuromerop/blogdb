@@ -17,7 +17,7 @@ function Home() {
   return (
     <div>
       <Navbar />
-      <div className="p-5 bg-secondary text-white">
+      <div className="p-5 bg-secondary">
         <h1 className="text-center fs-4">Inicia sesión para ver las publicaciones</h1>
       </div>
     </div>

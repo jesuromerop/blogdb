@@ -167,3 +167,23 @@ export const deletePost = async (id) => {
     }
         
 };
+
+export const editPost = async (id, post) => {
+    try {
+        const token = localStorage.getItem("token");
+        const res = await axios.patch(`${REACT_APP_BACKEND_URL}/post/${id}`, 
+        {title: post.title, description: post.description},
+        {'headers': { 'auth': token }})
+        
+        console.log(res.data);
+        if(res.status === 200) {
+            alert(res.data.msg);
+            return res.data;
+        }
+            
+    } catch (e) {
+        console.log(e);
+        alert("Ha ocurrido un error");
+    }
+        
+};

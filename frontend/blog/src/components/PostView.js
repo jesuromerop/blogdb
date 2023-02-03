@@ -22,19 +22,6 @@ function PostView() {
         post()
       }, [params]);
 
-    /* const handleSubmit = async (e) => {
-        e.preventDefault();
-        console.log({ title, description });
-        let result = await createPost(title, description);
-        setTitle("");
-        setDescription("");
-
-        if(result.success) {
-            alert(result.msg);
-            navigate("/blog");
-        }
-    }; */
-
     return (
         <>
             <Navbar />

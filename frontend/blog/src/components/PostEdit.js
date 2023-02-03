@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
-import { createPost } from '../api/crud';
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { getPost, editPost } from '../api/crud';
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from './Navbar';
 
-function Post() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+function PostEdit() {
+    const [post, setPost] = useState({});
     const navigate = useNavigate();
+    const params = useParams();
+
+    useEffect(() => {
+        const post = async () => {
+            let { id } = params;
+            const result = await getPost(id);
+            if (result.success) {
+                console.log(result)
+                setPost(result.data);
+            }
+        }
+        post();
+    }, [params]);
 
     const handleSubmit = async (e) => {
+        let { id } = params;
         e.preventDefault();
-        console.log({ title, description });
-        let result = await createPost(title, description);
-        setTitle("");
-        setDescription("");
-
+        console.log({ post });
+        let result = await editPost(id, post);
         if(result.success) {
-            alert(result.msg);
             navigate("/blog");
         }
     };
@@ -29,20 +38,20 @@ function Post() {
                     <div className="row no-gutters">
                         <div className="col-md-12">
                             <div className="card-body">
-                                <h3 className="mx-auto mb-4 text-center">Crear publicación</h3>
+                                <h3 className="mx-auto mb-4 text-center">Editar publicación</h3>
                                 <form>
                                         
                                     <div className="form-group mb-3">
-                                        <label htmlFor="title" className="mb-2">Ingresa el titulo</label>
+                                        <label htmlFor="title" className="mb-2">Título</label>
                                         <input 
                                             type="nombre" 
                                             className="form-control" 
                                             id="title" 
                                             name="title"
-                                            value={title}
+                                            value={post.title}
                                             required
                                             placeholder="Titulo" 
-                                            onChange={(e) => setTitle(e.target.value)} 
+                                            onChange={(e) => setPost({...post, title: e.target.value})} 
                                         />
                                     </div>
                                     <div className="form-group">
@@ -55,13 +64,13 @@ function Post() {
                                                 aria-label="Decripción" 
                                                 id="description" 
                                                 name="description" 
-                                                value={description} 
+                                                value={post.description} 
                                                 required
-                                                onChange={(e) => setDescription(e.target.value)} 
+                                                onChange={(e) => setPost({...post, description: e.target.value})} 
                                             ></textarea>
                                         </div>
                                     </div>
-                                    <button type="submit" onClick={handleSubmit} id="bt" className="btn btn-primary mr-0">Crear</button>                    
+                                    <button type="submit" onClick={handleSubmit} id="bt" className="btn btn-primary mr-0">Actualizar</button>                    
                                 </form>
                             </div>
                         </div>
@@ -72,4 +81,4 @@ function Post() {
     );
 }
 
-export default Post;
+export default PostEdit;

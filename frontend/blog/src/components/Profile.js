@@ -22,7 +22,7 @@ function Profile() {
             }
         }
         profile()
-    });
+    }, []);
 
     const handleSubmit = async (e) => {
         if (e.target.value === "emailBtn") await changeEmail(email)
@@ -37,8 +37,21 @@ function Profile() {
         }
     }
 
+    const fetchPosts = async () => {
+        const result = await getProfile();
+        if (result.success) {
+            console.log(result)
+            setPosts(result.data[0].userPosts);
+        }
+    }
+
+    const handleEdit = (e) => {
+        navigate(`/editpost/${e.target.value}`);
+    } 
+
     const handleDelete = async (e) => {
         await deletePost(e.target.value);
+        fetchPosts();
     }
 
     return (
@@ -50,7 +63,7 @@ function Profile() {
                         <div className="col-md-12">
                             <div className="card-body">
                                 <div className="mx-auto w-100 mb-3" id="profile">
-                                    <h1 className="text-center">Perfil</h1>
+                                    <h2 className="text-center m-0">Perfil</h2>
                                     <label htmlFor="name">Nombre</label>
                                     <input
                                         type="text"
@@ -102,6 +115,7 @@ function Profile() {
                     </div>
                 </div>
                 <div className="card mb-3 mx-auto p-2" style={{ maxWidth: "540px" }}>
+                    <h4 className="text-center">Publicaciones</h4>
                     <table className="table table-hover">
                         <thead>
                             <tr>
@@ -111,16 +125,21 @@ function Profile() {
                         </thead>
                         <tbody>
                             
-                            {posts ? posts.map((p, idx) => {
+                            {Array.isArray(posts) ? posts.map((p, idx) => {
                                 return (
                                     <tr key={idx}>
                                         <td style={{ wordWrap: "break-word" }}><p>{p.title}</p></td>
                                         <td className="mr-0 text-center w-50">
-                                            <button type="button" className="btn btn-warning mx-3">Editar</button>
+                                            <button type="button" className="btn btn-warning mx-3" value={p.IDBlog} onClick={handleEdit}>Editar</button>
                                             <button type="button" className="btn btn-danger mr-0" value={p.IDBlog} onClick={handleDelete}>Eliminar</button>
                                         </td>
                                     </tr>)
-                            }): null}
+                            }): 
+                            <tr>
+                                <td className="mr-0 text-center" colSpan={2}>
+                                    <h6>No hay publicaciones para mostrar</h6>
+                                </td>
+                            </tr>}
                         </tbody>
                     </table>
                 </div>

@@ -8,6 +8,7 @@ import Blog from './components/Blog';
 import Post from './components/Post';
 import Profile from './components/Profile';
 import PostView from './components/PostView';
+import PostEdit from './components/PostEdit';
 import { ProtectedRoute } from "./components/ProtectedRoute";
 
 function App() {
@@ -35,6 +36,11 @@ function App() {
             <Route path='/postview/:id' element={
               <ProtectedRoute>
                 <PostView />
+              </ProtectedRoute>
+            } />
+            <Route path='/editpost/:id' element={
+              <ProtectedRoute>
+                <PostEdit />
               </ProtectedRoute>
             } />
         </Routes>

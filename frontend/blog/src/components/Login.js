@@ -30,12 +30,12 @@ function Login() {
     };
 
     return (
-        <div>
+        <div style={{height: "100vh"}}>
             <Navbar />
-            <div className="card m-5 ">
-                <div className="card-body">
-                    <form onSubmit={handleSubmit}>
-                        <h1 className="mb-3 text-center">Iniciar Sesión</h1>
+            <div className="card my-5 mx-auto shadow p-2 " style={{maxWidth: "520px", height: "320px"}}>
+                <div className="card-body d-flex flex-column">
+                    <form className="my-auto" onSubmit={handleSubmit}>
+                        <h2 className="mb-3 text-center">Iniciar Sesión</h2>
                         <div className="mb-3 form-group">
                             <label htmlFor="email">Correo Electrónico</label>
                             <input 
